@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE hibernate-mapping PUBLIC   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>     
+    <class name="com.hibernate.model.Customer" table="customer">   
+              
+        <id name="customerId" column="cid">
+            <generator class="increment"></generator>
+        </id>         
+        <property name="customerName" column="cname" />         
+        <property name="customerCity" column="ccity" /> 
+    </class>     
+    
+    <sql-query name="sql_select">select * from customer</sql-query>     
+    <sql-query name="sql_select_with_param">select * from customer where cid=?</sql-query>    
+     
+    <query name="hql_select">from Customer c</query>     
+    <query name="hql_select_with_param">from Customer as c where c.customerId=:id</query>     
+    <query name="hql_select_with_named_param">from Customer c where c.customerName=:name</query>
+    
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+   <hibernate-mapping package="com.hibernate.model">
+       
+      <class name="Employee_Address" table="employee_address">
+          
+        <id name="Id" column="ID">
+          <generator class="foreign">
+            <param name="property">Employee</param>
+          </generator>
+         </id>
+         
+         <property name="Street" column="STREET" />
+         <property name="City" column="CITY" />
+         <property name="State" column="STATE" />
+         <property name="Country" column="COUNTRY" />
+         
+         <one-to-one name="Employee" class="Employee" constrained="true"></one-to-one>
+         
+      </class>
+    </hibernate-mapping>

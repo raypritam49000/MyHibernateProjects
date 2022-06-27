@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <class name="com.hibernate.model.Passport" table="passport">
+    
+        <id name="passportNumber" column="ppid">
+            <generator class="foreign">
+                <param name="property">person</param>
+            </generator>
+        </id>
+
+        <property name="issudDate" column="idate" />
+        <property name="expireDate" column="edate" />
+
+        <one-to-one name="person" class="com.hibernate.model.Person" cascade="all" />
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hibernate.model.Book" table="book">
+        <id name="bookId" column="bookid" />
+        <property name="bookName" column="bookname" />
+        <property name="isbnCode" column="isbncode" />
+
+        <idbag name="authors" table="author_books" cascade="all">
+            <collection-id type="int" column="book_author_id">
+                <generator class="increment"></generator>
+            </collection-id>
+            <key column="bid_fk" />
+            <many-to-many class="com.hibernate.model.Author"
+                column="aid_fk" />
+        </idbag>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hibernate.model.Author"
+        table="author">
+        <id name="authorId" column="authorid" />
+        <property name="authorName" column="name" />
+        <property name="authorAddress" column="address" />
+        <set name="books" table="author_books" cascade="all">
+            <key column="aid_fk" />
+            <many-to-many class="com.hibernate.model.Book"
+                column="bid_fk" />
+        </set>
+    </class>
+</hibernate-mapping>
