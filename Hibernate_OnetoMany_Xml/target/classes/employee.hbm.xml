@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="com.hibernate.model.Employee" table="employee">
+      <id name="empId" column="empId">
+          <generator class="increment"></generator>
+      </id>
+      <property name="name" column="ename"></property>
+      <property name="salary" column="esalary"></property>
+      
+      <set name="address" table="address" cascade="all">
+          <key column="empId"></key>
+          <one-to-many class="com.hibernate.model.Address"></one-to-many>
+      </set>
+      
+  </class>
+  
+    <class name="com.hibernate.model.Address" table="address">
+      <id name="addId" column="addId">
+          <generator class="increment"></generator>
+      </id>
+      <property name="city" column="ecity"></property>
+      <property name="state" column="estate"></property>
+      <property name="country" column="country"></property>
+  </class>
+</hibernate-mapping>
